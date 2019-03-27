@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "know-it",
   "version": "1.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "A web application for researching congressional information",
   "engines": {
     "node": ">= 7.0.0"
   },
