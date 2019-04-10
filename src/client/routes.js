@@ -2,16 +2,11 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {me} from './store'
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
-  componentDidMount() {
-    this.props.loadInitialData()
-  }
-
   render() {
     return (
       <Switch>
@@ -32,11 +27,7 @@ const mapState = state => {
 }
 
 const mapDispatch = dispatch => {
-  return {
-    loadInitialData() {
-      dispatch(me())
-    }
-  }
+  return {}
 }
 
 // The `withRouter` wrapper makes sure that updates are not blocked
@@ -46,6 +37,4 @@ export default withRouter(connect(mapState, mapDispatch)(Routes))
 /**
  * PROP TYPES
  */
-Routes.propTypes = {
-  loadInitialData: PropTypes.func.isRequired
-}
+Routes.propTypes = {}
