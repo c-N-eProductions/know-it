@@ -7,7 +7,7 @@ router.get('/', async (req, res, next) => {
   const options = {
     host: 'api.propublica.org',
     path: '/congress/v1/116/both/bills/introduced.json',
-    headers: {'x-api-key': 'pmNjGSzuJhAwWaP4Mtcqb09bG93bhsTgBfvNtVnP'}
+    headers: require('../../../secrets')
   }
 
   let billsData = ''
