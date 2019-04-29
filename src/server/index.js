@@ -3,6 +3,7 @@ const express = require('express')
 const morgan = require('morgan')
 const compression = require('compression')
 const PORT = process.env.PORT || 8080
+require('dotenv').config()
 const app = express()
 module.exports = app
 

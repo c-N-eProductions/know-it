@@ -9,7 +9,7 @@ describe('Bills routes', () => {
     beforeEach(async () => {
       res = await request('https://api.propublica.org')
         .get('/congress/v1/116/both/bills/introduced.json')
-        .set('X-API-Key', 'pmNjGSzuJhAwWaP4Mtcqb09bG93bhsTgBfvNtVnP')
+        .set('X-API-Key', process.env.PROPUBLICA_API_KEY)
     })
 
     it('returns with a 200 status', () => {
