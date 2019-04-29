@@ -35,7 +35,7 @@ describe('Bills routes', () => {
     })
 
     it('the result has a bills property', () => {
-      expect(res.body.resuts[0].to.have.own.property('bills'))
+      expect(res.body.results[0]).to.have.property('bills')
     })
 
     it('the result returns an array of the last 20 congressional bills', () => {
