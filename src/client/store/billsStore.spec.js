@@ -14,7 +14,7 @@ const mockStore = configureMockStore(middlewares)
 
 describe('billsStore - action, thunk, and reducer', () => {
   let store
-  const initialState = { bills: [] }
+  const initialState = []
   const recentBills = body.results[0].bills
 
   beforeEach(() => {
@@ -51,7 +51,7 @@ describe('billsStore - action, thunk, and reducer', () => {
 
   describe('reducer sets recent bills on state', () => {
     it('should return initial state', () => {
-      expect(billsReducer(undefined, {})).toEqual({ bills: [] })
+      expect(billsReducer(undefined, {})).toEqual([])
     })
     it('should handle GET_RECENT_BILLS', () => {
       expect(
@@ -62,7 +62,7 @@ describe('billsStore - action, thunk, and reducer', () => {
             recentBills
           }
         )
-      ).toEqual({ bills: recentBills })
+      ).toEqual(recentBills)
     })
   }) // end of reducer sets recent bills on state
 })
