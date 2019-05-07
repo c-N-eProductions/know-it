@@ -1,16 +1,20 @@
 import configureMockStore from 'redux-mock-store'
 import thunkMiddleware from 'redux-thunk'
 import fetchMock from 'fetch-mock'
-import {expect} from 'chai'
+import { expect } from 'chai'
 import body from '../testingData/recentBillsData'
-import {fetchRecentBillsThunk, getRecentBills, billsReducer} from './billsStore'
+import {
+  fetchRecentBillsThunk,
+  getRecentBills,
+  billsReducer
+} from './billsStore'
 
 const middlewares = [thunkMiddleware]
 const mockStore = configureMockStore(middlewares)
 
 describe('billsStore - action, thunk, and reducer', () => {
   let store
-  const initialState = {bills: []}
+  const initialState = { bills: [] }
   const recentBills = body.results[0].bills
 
   beforeEach(() => {
@@ -36,7 +40,7 @@ describe('billsStore - action, thunk, and reducer', () => {
     it('eventually dispatches the GET_RECENT_BILLS action', async () => {
       fetchMock.getOnce('/api/bills', {
         body,
-        headers: {'content-type': 'application/json'}
+        headers: { 'content-type': 'application/json' }
       })
       await store.dispatch(fetchRecentBillsThunk())
       const actions = store.getActions()
@@ -47,7 +51,7 @@ describe('billsStore - action, thunk, and reducer', () => {
 
   describe('reducer sets recent bills on state', () => {
     it('should return initial state', () => {
-      expect(billsReducer(undefined, {})).toEqual({bills: []})
+      expect(billsReducer(undefined, {})).toEqual({ bills: [] })
     })
     it('should handle GET_RECENT_BILLS', () => {
       expect(
@@ -58,7 +62,7 @@ describe('billsStore - action, thunk, and reducer', () => {
             recentBills
           }
         )
-      ).toEqual({bills: recentBills})
+      ).toEqual({ bills: recentBills })
     })
   }) // end of reducer sets recent bills on state
 })
