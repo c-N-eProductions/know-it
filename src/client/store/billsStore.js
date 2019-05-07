@@ -2,14 +2,25 @@
 const recentBills = []
 
 // action types
-export const GET_RECENT_BILLS = 'GET_RECENT_BILLS'
+const GET_RECENT_BILLS = 'GET_RECENT_BILLS'
 
 // action creators
-export const getRecentBills = recentBills => ({
+export const getRecentBills = fetchedBills => ({
   type: GET_RECENT_BILLS,
-  recentBills
+  fetchedBills
 })
 
 // thunk creators
 
 // reducers
+const billsReducer = (state = recentBills, action) => {
+  switch (action.type) {
+    case GET_RECENT_BILLS:
+      return action.fetchedBills
+
+    default:
+      return state
+  }
+}
+
+export default billsReducer
