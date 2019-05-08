@@ -3,8 +3,7 @@ import thunkMiddleware from 'redux-thunk'
 import fetchMock from 'fetch-mock'
 import { expect } from 'chai'
 import body from '../testingData/recentBillsData'
-import {
-  billsReducer,
+import billsReducer, {
   fetchRecentBillsThunk,
   getRecentBills
 } from './billsStore'
