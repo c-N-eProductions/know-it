@@ -31,7 +31,7 @@ describe('billsStore - action, thunk, and reducer', () => {
         type: 'GET_RECENT_BILLS',
         fetchedBills: recentBills
       }
-      expect(getRecentBills(recentBills)).to.be.equal(expectedAction)
+      expect(getRecentBills(recentBills)).to.eql(expectedAction)
     })
   }) // end of getRecentBills action creator
 
@@ -44,13 +44,13 @@ describe('billsStore - action, thunk, and reducer', () => {
       await store.dispatch(fetchRecentBillsThunk())
       const actions = store.getActions()
       expect(actions[0].type).to.be.equal('GET_RECENT_BILLS')
-      expect(actions[0].fetchedBills).to.be.deep.equal(recentBills)
+      expect(actions[0].fetchedBills).to.eql(recentBills)
     })
   }) // end of fetchRecentBillsThunk
 
   describe('reducer sets recent bills on state', () => {
     it('should return initial state', () => {
-      expect(billsReducer(undefined, {})).to.be.equal([])
+      expect(billsReducer(undefined, {})).to.eql([])
     })
     it('should handle GET_RECENT_BILLS', () => {
       expect(
@@ -58,10 +58,10 @@ describe('billsStore - action, thunk, and reducer', () => {
           {},
           {
             type: 'GET_RECENT_BILLS',
-            recentBills
+            fetchedBills: recentBills
           }
         )
-      ).toEqual(recentBills)
+      ).to.eql(recentBills)
     })
   }) // end of reducer sets recent bills on state
 })
