@@ -4,9 +4,9 @@ import fetchMock from 'fetch-mock'
 import { expect } from 'chai'
 import body from '../testingData/recentBillsData'
 import {
+  billsReducer,
   fetchRecentBillsThunk,
-  getRecentBills,
-  billsReducer
+  getRecentBills
 } from './billsStore'
 
 const middlewares = [thunkMiddleware]
@@ -30,9 +30,9 @@ describe('billsStore - action, thunk, and reducer', () => {
     it('should create an action to add 20 recent bills', () => {
       const expectedAction = {
         type: 'GET_RECENT_BILLS',
-        recentBills
+        fetchedBills: recentBills
       }
-      expect(getRecentBills(recentBills)).toEqual(expectedAction)
+      expect(getRecentBills(recentBills)).to.be.equal(expectedAction)
     })
   }) // end of getRecentBills action creator
 
@@ -51,7 +51,7 @@ describe('billsStore - action, thunk, and reducer', () => {
 
   describe('reducer sets recent bills on state', () => {
     it('should return initial state', () => {
-      expect(billsReducer(undefined, {})).toEqual([])
+      expect(billsReducer(undefined, {})).to.be.equal([])
     })
     it('should handle GET_RECENT_BILLS', () => {
       expect(
