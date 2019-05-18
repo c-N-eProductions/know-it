@@ -1,7 +1,7 @@
 import configureMockStore from 'redux-mock-store'
 import thunkMiddleware from 'redux-thunk'
 import { expect } from 'chai'
-import body from '../testingData/recentBillsData'
+import recentBills from '../testingData/recentBillsData'
 import billsReducer, {
   fetchRecentBillsThunk,
   getRecentBills
@@ -14,7 +14,6 @@ const mockStore = configureMockStore(middlewares)
 describe('billsStore - action, thunk, and reducer', () => {
   let store
   const initialState = []
-  const recentBills = body.results[0].bills
   axios.defaults.baseURL = 'http://localhost:8080'
 
   beforeEach(() => {
