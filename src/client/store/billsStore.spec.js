@@ -7,6 +7,7 @@ import billsReducer, {
   fetchRecentBillsThunk,
   getRecentBills
 } from './billsStore'
+import axios from 'axios'
 
 const middlewares = [thunkMiddleware]
 const mockStore = configureMockStore(middlewares)
@@ -15,6 +16,7 @@ describe('billsStore - action, thunk, and reducer', () => {
   let store
   const initialState = []
   const recentBills = body.results[0].bills
+  axios.defaults.baseURL = 'http://localhost:8080'
 
   beforeEach(() => {
     store = mockStore(initialState)
@@ -43,8 +45,9 @@ describe('billsStore - action, thunk, and reducer', () => {
       })
       await store.dispatch(fetchRecentBillsThunk())
       const actions = store.getActions()
+      //console.log('these are the bills ', actions[0].fetchedBills.results[0].bills)
       expect(actions[0].type).to.be.equal('GET_RECENT_BILLS')
-      expect(actions[0].fetchedBills).to.eql(recentBills)
+      expect(actions[0].fetchedBills.results[0].bills).to.have.length(20)
     })
   }) // end of fetchRecentBillsThunk
 

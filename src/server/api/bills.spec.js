@@ -6,7 +6,7 @@ let res = null
 
 describe('Bills routes', () => {
   describe('GET https://api.propublica.org api', () => {
-    beforeEach(async () => {
+    before(async () => {
       res = await request('https://api.propublica.org')
         .get('/congress/v1/116/both/bills/introduced.json')
         .set('X-API-Key', process.env.PROPUBLICA_API_KEY)

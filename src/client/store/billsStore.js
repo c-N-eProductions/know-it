@@ -1,3 +1,4 @@
+import axios from 'axios'
 // initial state
 const recentBills = []
 
@@ -11,11 +12,26 @@ export const getRecentBills = fetchedBills => ({
 })
 
 // thunk creators
+export const fetchRecentBillsThunk = () =>  dispatch => {
+  return axios
+   .get(`/api/bills`)
+   .then(res => {
+     const {data} = res
+     console.log('there some data', data)
+     dispatch(getRecentBills(data))
+    })
+   .catch(err => console.error('this is the error', err))
+  //console.log('this is the response', resp)
+    console.log('newwwwwwwwwwww')
+  return 'yayaaaaaaaa'
+}
+
 
 // reducers
 const billsReducer = (state = recentBills, action) => {
   switch (action.type) {
     case GET_RECENT_BILLS:
+      //console.log('fetched bills', action.fetchedBills)
       return action.fetchedBills
 
     default:
