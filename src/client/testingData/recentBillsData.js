@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 module.exports = {
   status: 'OK',
   copyright: 'Copyright (c) 2019 Pro Publica Inc. All Rights Reserved.',

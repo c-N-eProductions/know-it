@@ -45,7 +45,6 @@ describe('billsStore - action, thunk, and reducer', () => {
       })
       await store.dispatch(fetchRecentBillsThunk())
       const actions = store.getActions()
-      //console.log('these are the bills ', actions[0].fetchedBills.results[0].bills)
       expect(actions[0].type).to.be.equal('GET_RECENT_BILLS')
       expect(actions[0].fetchedBills.results[0].bills).to.have.length(20)
     })
