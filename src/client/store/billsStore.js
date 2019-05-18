@@ -16,8 +16,9 @@ export const fetchRecentBillsThunk = () => dispatch => {
   return axios
     .get(`/api/bills`)
     .then(res => {
-      const { data } = res
-      dispatch(getRecentBills(data))
+      // destructuring res.data.results[0].bills into a variable call bills
+      const { data: { results: [{ bills }] } } = res
+      dispatch(getRecentBills(bills))
     })
     .catch(err => console.error('this is the error', err))
 }
