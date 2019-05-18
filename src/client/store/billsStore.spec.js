@@ -1,6 +1,5 @@
 import configureMockStore from 'redux-mock-store'
 import thunkMiddleware from 'redux-thunk'
-import fetchMock from 'fetch-mock'
 import { expect } from 'chai'
 import body from '../testingData/recentBillsData'
 import billsReducer, {
@@ -23,7 +22,6 @@ describe('billsStore - action, thunk, and reducer', () => {
   })
 
   afterEach(() => {
-    fetchMock.restore()
     store.clearActions()
   })
 
@@ -39,10 +37,6 @@ describe('billsStore - action, thunk, and reducer', () => {
 
   describe('fetchRecentBillsThunk', () => {
     it('eventually dispatches the GET_RECENT_BILLS action', async () => {
-      fetchMock.getOnce('/api/bills', {
-        body,
-        headers: { 'content-type': 'application/json' }
-      })
       await store.dispatch(fetchRecentBillsThunk())
       const actions = store.getActions()
       expect(actions[0].type).to.be.equal('GET_RECENT_BILLS')
