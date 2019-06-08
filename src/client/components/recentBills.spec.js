@@ -1,5 +1,6 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
+import { expect } from 'chai'
 import Adapter from 'enzyme-adapter-react-16'
 import { RecentBills } from './RecentBills'
 import recentBills from '../testingData/recentBillsData'
@@ -9,7 +10,9 @@ Enzyme.configure({ adapter: new Adapter() })
 describe('RecentBills component', () => {
   let recentBillsWrapper
   beforeEach(() => {
-    recentBillsWrapper = shallow(<RecentBills recentBillsData={recentBills} />)
+    recentBillsWrapper = shallow(
+      <RecentBills recentBills={recentBills.bills} getRecentBills={() => {}} />
+    )
   })
 
   it('should render a title as an h1 element', () => {
@@ -19,6 +22,6 @@ describe('RecentBills component', () => {
   })
 
   it('should render twenty recent bills, each with a class of "recentBill"', () => {
-    expect(recentBillsWrapper.find('.recentBill').to.have.lengthOf(20))
+    expect(recentBillsWrapper.find('.recent-bill')).to.have.lengthOf(20)
   })
 }) // end of RecentBills component

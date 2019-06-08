@@ -14,7 +14,7 @@ export class RecentBills extends Component {
     const { recentBills } = this.props
     return (
       <div className="recent-bills">
-        <h1>This is the recent bills component</h1>
+        <h1>20 Most Recent Congressional Bills</h1>
         {recentBills &&
           recentBills.map(bill => (
             <div key={bill.number} className="recent-bill">
