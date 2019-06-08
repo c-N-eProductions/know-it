@@ -6,17 +6,12 @@ import { fetchRecentBillsThunk } from '../store/billsStore'
  * COMPONENT
  */
 export class RecentBills extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
     this.props.getRecentBills()
   }
 
   render() {
     const { recentBills } = this.props
-    //console.log('these are the recent bills ', this.props)
     return (
       <div className="recent-bills">
         <h1>This is the recent bills component</h1>
@@ -32,10 +27,10 @@ export class RecentBills extends Component {
                 <li className="bill-sponsor">
                   {`${bill.sponsor_title} ${bill.sponsor_name}: ${
                     bill.sponsor_state
-                  } ${bill.sponsor_party}`}
+                  }-${bill.sponsor_party}`}
                 </li>
                 <li className="bill-lastest-action">
-                  {`${bill.latest_major_action} on ${
+                  {`${bill.latest_major_action.slice(0, -1)} on ${
                     bill.latest_major_action_date
                   }`}
                 </li>
