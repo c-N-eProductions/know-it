@@ -6,16 +6,17 @@ import { fetchRecentBillsThunk } from '../store/billsStore'
  * COMPONENT
  */
 export class RecentBills extends Component {
-  constructor() {
+  constructor(props) {
     super(props)
   }
 
   componentDidMount() {
+    console.log(`these are the props ${props}`)
     this.props.getRecentBills()
   }
 
   render() {
-    const { recentBills } = props
+    const { recentBills } = this.props
     return (
       <div className="recent-bills">
         {recentBills &&
