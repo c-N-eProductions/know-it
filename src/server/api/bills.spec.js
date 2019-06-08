@@ -1,4 +1,4 @@
-const {expect} = require('chai')
+const { expect } = require('chai')
 const request = require('supertest')
 const server = require('../index')
 
@@ -6,10 +6,10 @@ let res = null
 
 describe('Bills routes', () => {
   describe('GET https://api.propublica.org api', () => {
-    beforeEach(async () => {
+    before(async () => {
       res = await request('https://api.propublica.org')
         .get('/congress/v1/116/both/bills/introduced.json')
-        .set('X-API-Key', 'pmNjGSzuJhAwWaP4Mtcqb09bG93bhsTgBfvNtVnP')
+        .set('X-API-Key', process.env.PROPUBLICA_API_KEY)
     })
 
     it('returns with a 200 status', () => {
@@ -35,7 +35,7 @@ describe('Bills routes', () => {
     })
 
     it('the result has a bills property', () => {
-      expect(res.body.resuts[0].to.have.own.property('bills'))
+      expect(res.body.results[0]).to.have.property('bills')
     })
 
     it('the result returns an array of the last 20 congressional bills', () => {
