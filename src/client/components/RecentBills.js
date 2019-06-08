@@ -11,14 +11,15 @@ export class RecentBills extends Component {
   }
 
   componentDidMount() {
-    console.log(`these are the props ${props}`)
     this.props.getRecentBills()
   }
 
   render() {
     const { recentBills } = this.props
+    //console.log('these are the recent bills ', this.props)
     return (
       <div className="recent-bills">
+        <h1>This is the recent bills component</h1>
         {recentBills &&
           recentBills.map(bill => (
             <div key={bill.number} className="recent-bill">
@@ -27,15 +28,15 @@ export class RecentBills extends Component {
                   <a href={bill.govtrack_url}>{bill.number}</a>
                 </li>
                 <li className="bill-title">{bill.title}</li>
-                <li className="bill-introduced-date">{bill.introuced_date}</li>
+                <li className="bill-introduced-date">{bill.introduced_date}</li>
                 <li className="bill-sponsor">
                   {`${bill.sponsor_title} ${bill.sponsor_name}: ${
                     bill.sponsor_state
                   } ${bill.sponsor_party}`}
                 </li>
                 <li className="bill-lastest-action">
-                  {`${bill.lastest_major_action} on ${
-                    bill.lastest_major_action_date
+                  {`${bill.latest_major_action} on ${
+                    bill.latest_major_action_date
                   }`}
                 </li>
               </ul>

@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Route, Switch} from 'react-router-dom'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { withRouter, Route, Switch } from 'react-router-dom'
+import RecentBills from './components/RecentBills'
 import PropTypes from 'prop-types'
 
 /**
@@ -10,7 +11,8 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route path="/" component={() => <h1>Know It</h1>} />
+        <Route exact path="/" component={() => <h1>Know It</h1>} />
+        <Route path="/recent-bills" component={RecentBills} />
       </Switch>
     )
   }
