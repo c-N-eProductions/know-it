@@ -3,7 +3,8 @@ import Enzyme, { shallow } from 'enzyme'
 import { expect } from 'chai'
 import Adapter from 'enzyme-adapter-react-16'
 import { RecentBills } from './RecentBills'
-import recentBills from '../testingData/recentBillsData'
+import recentBillsAPIResults from '../testingData/recentBillsData'
+const { results: [{ bills }] } = recentBillsAPIResults
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -11,7 +12,7 @@ describe('RecentBills component', () => {
   let recentBillsWrapper
   beforeEach(() => {
     recentBillsWrapper = shallow(
-      <RecentBills recentBills={recentBills.bills} getRecentBills={() => {}} />
+      <RecentBills recentBills={bills} getRecentBills={() => {}} />
     )
   })
 
