@@ -9,7 +9,7 @@ import billsReducer, {
 } from './billsStore'
 import recentBillsAPIResults from '../testingData/recentBillsData'
 
-const { results: [{ bills }] } = recentBillsAPIResults
+const { results: [{ bills: twentyRecentBills }] } = recentBillsAPIResults
 const middlewares = [thunkMiddleware]
 const mockStore = configureMockStore(middlewares)
 
@@ -32,15 +32,15 @@ describe('billsStore - action, thunk, and reducer', () => {
     it('should create an action to add 20 recent bills', () => {
       const expectedAction = {
         type: 'GET_RECENT_BILLS',
-        fetchedBills: bills
+        fetchedBills: twentyRecentBills
       }
-      expect(getRecentBills(bills)).to.eql(expectedAction)
+      expect(getRecentBills(twentyRecentBills)).to.eql(expectedAction)
     })
   }) // end of getRecentBills action creator
 
   describe('fetchRecentBillsThunk', () => {
     it('eventually dispatches the GET_RECENT_BILLS action', async () => {
-      mockAxios.onGet('/api/bills').replyOnce(200, recentBillsAPIResults)
+      mockAxios.onGet('/api/recentBills').replyOnce(200, recentBillsAPIResults)
       await store.dispatch(fetchRecentBillsThunk())
       const actions = store.getActions()
       expect(actions[0].type).to.be.equal('GET_RECENT_BILLS')
@@ -61,10 +61,10 @@ describe('billsStore - action, thunk, and reducer', () => {
           {},
           {
             type: 'GET_RECENT_BILLS',
-            fetchedBills: bills
+            fetchedBills: twentyRecentBills
           }
         )
-      ).to.eql(bills)
+      ).to.eql(twentyRecentBills)
     })
   }) // end of reducer sets recent bills on state
 }) // end of billsStore - action, thunk, and reducer
