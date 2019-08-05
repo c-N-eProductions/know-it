@@ -25,9 +25,9 @@ describe('Bills routes', () => {
     })
   }) // end describe('GET https://api.propublica.org api')
 
-  describe('GET /api/bills', () => {
+  describe('GET /api/recentBills', () => {
     beforeEach(async () => {
-      res = await request(server).get('/api/bills')
+      res = await request(server).get('/api/recentBills')
     })
 
     it('returns with a 200 status', () => {
