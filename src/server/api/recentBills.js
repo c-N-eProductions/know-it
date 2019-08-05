@@ -12,16 +12,16 @@ router.get('/', async (req, res, next) => {
     }
   }
 
-  let billsData = ''
   await https.get(options, resp => {
+    let recentBillsData = ''
     // A chunk of data has been received.
     resp.on('data', bills => {
-      billsData += bills
+      recentBillsData += bills
     })
 
     // The whole response has been received.
     resp.on('end', () => {
-      res.status(200).send(JSON.parse(billsData))
+      res.status(200).send(JSON.parse(recentBillsData))
     })
   })
 })
