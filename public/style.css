@@ -13,6 +13,16 @@ a {
   height: 73px;
 }
 
+#knowit-logo {
+  display: inline-block;
+  position: relative;
+  left: 15px;
+  top: -6px;
+}
+
 #knowit-logo-text {
   color: #b1b1b1;
+  font-family: 'Domine', serif;
+  position: relative;
+  left: -69px;
 }
