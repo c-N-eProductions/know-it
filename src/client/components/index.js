@@ -4,3 +4,4 @@
  * having to figure out which file they belong to!
  */
 export { default as Navbar } from './Navbar'
+export { default as RecentBills } from './RecentBills'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
-import RecentBills from './components/RecentBills'
+import { RecentBills } from './components'
 import PropTypes from 'prop-types'
 
 /**
