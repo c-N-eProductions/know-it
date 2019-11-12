@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => (
-  <div>
-    <h1>Know It!!!!</h1>
-    <nav>underconstruction</nav>
-    <hr />
-  </div>
+  <header id="navbar-header">
+    <div id="knowit-logo">
+      <img src="images/knowIt-logo.svg" />
+      <span id="knowit-logo-text">KnowIt</span>
+    </div>
+  </header>
 )
 
 /**

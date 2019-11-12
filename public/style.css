@@ -1,21 +1,28 @@
 body {
   font-family: sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 a {
   text-decoration: none;
 }
 
-label {
-  display: block;
+#navbar-header {
+  background-color: #1b2943;
+  height: 73px;
 }
 
-nav a {
+#knowit-logo {
   display: inline-block;
-  margin: 1em;
+  position: relative;
+  left: 15px;
+  top: -6px;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
+#knowit-logo-text {
+  color: #b1b1b1;
+  font-family: 'Domine', serif;
+  position: relative;
+  left: -69px;
 }
